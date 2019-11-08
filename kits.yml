@@ -1,0 +1,92 @@
+# ---------------------------------------------------------------------- #
+#                This Menu Was Made Using DeluxeMenus 1.12.0             #
+# ---------------------------------------------------------------------- #
+#                                                                        #
+# NOTE: This menu was made for a seperate yaml-file!                     #
+#       Add the following code to the config.yml of DeluxeMenus and      #
+#       reload the plugin (/dm reload).                                  #
+#
+# gui_menus:                                                             #
+#   kits:                                                                #
+#     file: kits.yml                                                     #
+#                                                                        #
+# ADD THIS INSIDE config.yml AND kits.yml INSIDE gui_menus FOLDER,       #
+# THEN RELOAD THE PLUGIN (/dm reload)                                    #
+# ---------------------------------------------------------------------- #
+menu_title: '&aKits Menu'
+open_command:
+- kit
+- kits
+size: 27
+update_interval: 1
+open_requirement:
+  requirements:
+    permission:
+      type: has permission
+      permission: essentials.kit
+  deny_commands:
+  - '[message] '
+  - '[message] &8[&bServer&8] &7You do not have the required permission!'
+  - '[message] '
+items:  
+  'cooldown':
+    material: Gray_Dye
+    slot: 13
+    priority: 1
+    update: true
+    view_requirement:
+      requirements:
+        permission:
+          type: has permission
+          permission: essentials.kits.example
+        available:
+          type: string equals ignorecase
+          input: '%essentials_kit_is_available_example%'
+          output: 'no'
+    display_name: '&r'
+    lore:
+    - '&b* &eKit&8: &7Example'
+    - '&b* &eStatus&8: &4On Cooldown'
+    - '&b* &eAvailable In&8: &7%essentials_kit_time_until_available_example%'
+    - '&r'
+  'available':
+    material: Lime_Dye
+    slot: 13
+    priority: 2
+    update: true
+    view_requirement:
+      requirements:
+        permission:
+          type: has permission
+          permission: essentials.kits.example
+        available:
+          type: string equals ignorecase
+          input: '%essentials_kit_is_available_example%'
+          output: 'yes'
+    display_name: '&r'
+    lore:
+    - '&b* &eKit&8: &7Example'
+    - '&b* &eStatus&8: &2Available'
+    - ''
+    - '&b* &a&oClick to Claim'
+    - '&r'
+    left_click_commands:
+    - '[player] kit example'
+    - '[refresh]'
+    - '[refresh]<delay=100>'
+    right_click_commands:
+    - '[player] kit example'
+    - '[refresh]'
+    - '[refresh]<delay=100>'
+  'locked':
+    material: Red_Dye
+    slot: 13
+    priority: 3
+    update: true
+    display_name: '&r'
+    lore:
+    - '&b* &eKit&8: &7Example'
+    - '&b* &eStatus&8: &4Locked'
+    - '&r'
+    
+    
