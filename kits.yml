@@ -1,32 +1,39 @@
 # ---------------------------------------------------------------------- #
-#                This Menu Was Made Using DeluxeMenus 1.12.0             #
+#                此菜单制作环境: DeluxeMenus 1.12.0                       #
 # ---------------------------------------------------------------------- #
 #                                                                        #
-# NOTE: This menu was made for a seperate yaml-file!                     #
-#       Add the following code to the config.yml of DeluxeMenus and      #
-#       reload the plugin (/dm reload).                                  #
-#
+# 注意: 此菜单是单独文件格式存在的,请勿直接复制进config.yml                  #
+#       把以下代码复制进入gui_menus的kits.yml(如果没有就新建一个)           #
+#       并在config.yml注册,注册的代码紧跟在下面                             #
+#       然后重置插件(/dm reload)                                          #
+#                                                                        #
 # gui_menus:                                                             #
 #   kits:                                                                #
 #     file: kits.yml                                                     #
 #                                                                        #
-# ADD THIS INSIDE config.yml AND kits.yml INSIDE gui_menus FOLDER,       #
-# THEN RELOAD THE PLUGIN (/dm reload)                                    #
 # ---------------------------------------------------------------------- #
-menu_title: '&aKits Menu'
+menu_title: '&a礼包菜单'
+#你可以随意更改,不过请保证遵循YAML格式的前提下
 open_command:
 - kit
 - kits
+#换行,空格,- <命令> 即可,请遵循YAML格式
 size: 27
+#9,18,27,36,45,54都可以,GUI界面大小
 update_interval: 1
+#物品变量更新间隔,只能用于update: true的物品上,单位是秒
 open_requirement:
   requirements:
+  #此处你可以随意添加判断式(请遵循格式),下面只是个例子
     permission:
       type: has permission
+      #判断玩家是否拥有权限
       permission: essentials.kit
+      #判断玩家是否拥有权限essentials.kit
   deny_commands:
+  #如果玩家没有,则不予打开菜单,并返回以下操作
   - '[message] '
-  - '[message] &8[&bServer&8] &7You do not have the required permission!'
+  - '[message] &8[&b服务器娘&8] &7您好像没有打开此菜单的权限呢'
   - '[message] '
 items:  
   'cooldown':
@@ -39,15 +46,18 @@ items:
         permission:
           type: has permission
           permission: essentials.kits.example
+          #判断玩家是否具有essentials.kits.example的权限
         available:
           type: string equals ignorecase
           input: '%essentials_kit_is_available_example%'
           output: 'no'
+          #判断变量%essentials_kit_is_available_example%的返回值是否是no
+          #两者只要有其一返回不通过则返回下一优先级的物品
     display_name: '&r'
     lore:
-    - '&b* &eKit&8: &7Example'
-    - '&b* &eStatus&8: &4On Cooldown'
-    - '&b* &eAvailable In&8: &7%essentials_kit_time_until_available_example%'
+    - '&b* &e礼包&8: &7例子'
+    - '&b* &e状态&8: &4冷却'
+    - '&b* &e剩余&8: &7%essentials_kit_time_until_available_example%'
     - '&r'
   'available':
     material: Lime_Dye
@@ -59,16 +69,19 @@ items:
         permission:
           type: has permission
           permission: essentials.kits.example
+          #判断玩家是否具有essentials.kits.example的权限
         available:
           type: string equals ignorecase
           input: '%essentials_kit_is_available_example%'
           output: 'yes'
+          #判断变量%essentials_kit_is_available_example%的返回值是否是yes
+          #两者只要有其一返回不通过则返回下一优先级的物品
     display_name: '&r'
     lore:
-    - '&b* &eKit&8: &7Example'
-    - '&b* &eStatus&8: &2Available'
+    - '&b* &e礼包&8: &7例子'
+    - '&b* &e状态&8: &2可用'
     - ''
-    - '&b* &a&oClick to Claim'
+    - '&b* &a&o点击领取'
     - '&r'
     left_click_commands:
     - '[player] kit example'
@@ -85,8 +98,8 @@ items:
     update: true
     display_name: '&r'
     lore:
-    - '&b* &eKit&8: &7Example'
-    - '&b* &eStatus&8: &4Locked'
+    - '&b* &e礼包&8: &7例子'
+    - '&b* &e状态&8: &4无权'
     - '&r'
     
     
