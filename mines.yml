@@ -1,0 +1,165 @@
+# ---------------------------------------------------------------------- #
+#                此菜单制作环境: DeluxeMenus 1.10.4                       #
+# ---------------------------------------------------------------------- #
+#                                                                        #
+# 注意: 此菜单是单独文件格式存在的,请勿直接复制进config.yml                  #
+#       把以下代码复制进入gui_menus的kits.yml(如果没有就新建一个)           #
+#       并在config.yml注册,注册的代码紧跟在下面                             #
+#       然后重置插件(/dm reload)                                          #
+#                                                                        #
+# gui_menus:                                                             #
+#   kits:                                                                #
+#     file: mines.yml                                                    #
+#                                                                        #
+# ---------------------------------------------------------------------- #
+menu_title: '&9矿场菜单'
+#下文部分与Kits重叠部分不做注释
+open_command:
+- mine
+- mines
+size: 9
+open_requirement:
+  requirements:
+    permission:
+      type: has permission
+      permission: cs.azurehanchen
+      #打开菜单需要的权限
+  deny_commands:
+  - '[message] &c您好像没有权限打开矿场菜单'
+items:
+  'A-UNLOCKED':
+    material: 160
+    data: 5
+    slot: 1
+    priority: 2
+    display_name: '&aA 矿场'
+    lore:
+    - '&f点击前往'
+    - '&fA 矿场.'
+    - ''
+    - '&a&l已解锁'
+    left_click_commands:
+    - '[close]'
+    - '[player] warp A'
+    right_click_commands:
+    - '[close]'
+    - '[player] warp A'
+#
+# B MINE
+#
+  'B-LOCKED':
+    material: 160
+    data: 14
+    slot: 2
+    priority: 3
+    display_name: '&cB 矿场'
+    lore:
+    - '&f点击前往'
+    - '&f矿场 B'
+    - ''
+    - '&c&l未解锁'
+  'B-UNLOCKED':
+    material: 160
+    data: 5
+    slot: 2
+    priority: 2
+    view_requirement:
+      requirements:
+        anything_here:
+          type: has permission
+          permission: ezranks.rank.b
+          #改成你想让玩家前往B矿场的前提
+    display_name: '&aB Mine'
+    lore:
+    - '&f点击前往'
+    - '&f矿场B'
+    - ''
+    - '&a&l已解锁'
+    left_click_commands:
+    - '[close]'
+    - '[player] warp B'
+    right_click_commands:
+    - '[close]'
+    - '[player] warp B'
+  'B-CURRENT':
+    material: 160
+    data: 4
+    slot: 2
+    priority: 1
+    view_requirement:
+      requirements:
+        anything_here:
+          type: string equals ignorecase
+          input: '%ezrankspro_rank%'
+          output: B
+    display_name: '&eB矿场'
+    lore:
+    - '&f点击前往'
+    - '&f矿场B'
+    - ''
+    - '&e&l已解锁'
+    left_click_commands:
+    - '[close]'
+    - '[player] warp B'
+    right_click_commands:
+    - '[close]'
+    - '[player] warp B'
+#
+# C 矿场
+#
+  'C-LOCKED':
+    material: 160
+    data: 14
+    slot: 3
+    priority: 3
+    display_name: '&cC矿场'
+    lore:
+    - '&f点击前往'
+    - '&fC矿场'
+    - ''
+    - '&c&l未解锁'
+  'C-UNLOCKED':
+    material: 160
+    data: 5
+    slot: 3
+    priority: 2
+    view_requirement:
+      requirements:
+        anything_here:
+          type: has permission
+          permission: ezranks.rank.C
+    display_name: '&aC矿场'
+    lore:
+    - '&f点击前往'
+    - '&fC矿场'
+    - ''
+    - '&a&l已解锁'
+    left_click_commands:
+    - '[close]'
+    - '[player] warp C'
+    right_click_commands:
+    - '[close]'
+    - '[player] warp C'
+  'C-CURRENT':
+    material: 160
+    data: 4
+    slot: 3
+    priority: 1
+    view_requirement:
+      requirements:
+        anything_here:
+          type: string equals ignorecase
+          input: '%ezrankspro_rank%'
+          output: C
+    display_name: '&eC矿场'
+    lore:
+    - '&f点击前往'
+    - '&fC矿场'
+    - ''
+    - '&e&l已结束'
+    left_click_commands:
+    - '[close]'
+    - '[player] warp C'
+    right_click_commands:
+    - '[close]'
+    - '[player] warp C'
