@@ -1,0 +1,85 @@
+# ---------------------------------------------------------------------- #
+#                此菜单制作环境: DeluxeMenus 1.10.4                      #
+# ---------------------------------------------------------------------- #
+#                                                                        #
+# 注意: 此菜单是单独文件格式存在的,请勿直接复制进config.yml              #
+#       把以下代码复制进入gui_menus的kits_cmi.yml(如果没有就新建一个)    #
+#       并在config.yml注册,注册的代码紧跟在下面                          #
+#       然后重置插件(/dm reload)                                         #
+#                                                                        #
+# gui_menus:                                                             #
+#   kits:                                                                #
+#     file: serverselector.yml                                           #
+#                                                                        #
+# ---------------------------------------------------------------------- #
+menu_title: '&9选择房间'
+open_command: server
+size: 9
+update_interval: 1
+items:
+  waiting:
+    material: WOOL
+    data: 5
+    slot: 1
+    priority: 1
+    update: true
+    view_requirement:
+      requirements:
+        vanila_online:
+          type: string equals ignorecase
+          input: '%pinger_motd_127.0.0.1:10001%' #注意,PINGER的PAPI需要IP:端口,不能解析域名!!!
+          output: '&a等待中...' 
+    display_name: '&a起床战争 &7(&e等待中&7)'
+    lore:
+    - '&7人数: &a%bungee_bedwars_1% &7/ &a%pinger_127.0.0.1:10001%'
+    - '&7地图: &b吃豆豆'
+    - ''
+    - '&a点击加入该房间'
+    left_click_commands:
+    - '[close]'
+    - '[message] &7正在连接至 &aBedWars_1(吃豆豆)&7...'
+    - '[connect] bedwars_1'
+  playing:
+    material: WOOL
+    data: 14
+    slot: 1
+    priority: 2
+    update: true
+    view_requirement:
+      requirements:
+        vanila_online:
+          type: string equals ignorecase
+          input: '%pinger_motd_127.0.0.1:10001%' #注意,PINGER的PAPI需要IP:端口,不能解析域名!!!
+          output: '&c游戏中' 
+    display_name: '&a起床战争 &7(&c已开始&7)'
+    lore:
+    - '&7人数: &a%bungee_bedwars_1% &7/ &a%pinger_127.0.0.1:10001%'
+    - '&7地图: &b吃豆豆'
+    - ''
+    - '&a点击刷新'
+    left_click_commands:
+    - '[refresh]'
+    right_click_commands:
+    - '[refresh]'
+  error:
+    material: WOOL
+    data: 15
+    slot: 1
+    priority: 3
+    update: true
+    view_requirement:
+      requirements:
+        vanila_online:
+          type: string equals ignorecase
+          input: '%pinger_motd_127.0.0.1:10001%' #注意,PINGER的PAPI需要IP:端口,不能解析域名!!!
+          output: '&a等待中...' 
+    display_name: '&a起床战争 &7(&c离线&7)'
+    lore:
+    - '&7人数: &aNULL &7/ &aNULL'
+    - '&7地图: &b吃豆豆'
+    - ''
+    - '&a点击刷新'
+    left_click_commands:
+    - '[refresh]'
+    right_click_commands:
+    - '[refresh]'
