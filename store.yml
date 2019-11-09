@@ -1,0 +1,176 @@
+# ---------------------------------------------------------------------- #
+#                此菜单制作环境: DeluxeMenus 1.10.5                      #
+# ---------------------------------------------------------------------- #
+#                                                                        #
+# 注意: 此菜单是单独文件格式存在的,请勿直接复制进config.yml              #
+#       把以下代码复制进入gui_menus的store.yml(如果没有就新建一个)       #
+#       并在config.yml注册,注册的代码紧跟在下面                          #
+#       然后重置插件(/dm reload)                                         #
+#                                                                        #
+# gui_menus:                                                             #
+#   kits:                                                                #
+#     file: store.yml                                                    #
+#                                                                        #
+# ---------------------------------------------------------------------- #
+menu_title: '&9商店'
+open_command: store
+size: 9
+update_interval: 1
+##########################################################################
+# + ------------------------------------------------------------------ + #
+# |                            VAULT 经济系统                          | #
+# + ------------------------------------------------------------------ + #
+##########################################################################
+items:
+  '0':
+    material: stone
+    data: 1
+    slot: 0
+    display_name: '&f花岗岩'
+    lore:
+    - '&8* &7购买: &f100&e金币'
+    - '&8* &7出售: &f25&e金币'
+    left_click_requirement:
+      requirements:
+        anything_here:
+          type: has money
+          amount: 100
+      deny_commands:
+      - '[message] &4商店 &8> &f你需要 &c100元 &f来购买 &c1 x 花岗岩&f.'
+    right_click_requirement:
+      requirements:
+        anything_here:
+          type: string equals
+          input: '%checkitem_mat:STONE,data:1%'
+          output: 'yes'
+      deny_commands:
+      - '[message] &4商店 &8> &f你没有 &c1 x 花岗岩 &f来出售.'
+    left_click_commands:
+    - '[console] eco take %player_name% 100'
+    - '[console] give %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你购买了 &a1 x 花岗岩 &f花费 &a100金币&f.'
+    right_click_commands:
+    - '[console] eco give %player_name% 25'
+    - '[console] clear %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你出售了 &a1 x 花岗岩 &f获得 &a25金币&f.'
+### Vault经济系统商店结束
+
+##########################################################################
+# + ------------------------------------------------------------------ + #
+# |                       TOKEN ENCHANT 经济系统                       | #
+# + ------------------------------------------------------------------ + #
+##########################################################################
+# 此处原创的"经济系统"是由Placeholder中的JavaScript编写,作者vk2gpz
+# 更多详情查看这里 > https://www.spigotmc.org/wiki/placeholderapi-javascript-expansion-scripts/#tokenenchant-token-value
+  'tokens':
+    material: stone
+    data: 1
+    slot: 1
+    display_name: '&f花岗岩'
+    lore:
+    - '&8* &7购买: &f100 &c代币'
+    - '&8* &7出售: &f25 &a代币'
+    left_click_requirement:
+      requirements:
+        anything_here:
+          type: '>='
+          input: '%javascript_tokenenchant_token%'
+          output: '100'
+      deny_commands:
+      - '[message] &4商店 &8> &f你需要 &c100 代币 &f来购买 &c1 x 花岗岩&f.'
+    right_click_requirement:
+      requirements:
+        anything_here:
+          type: string equals
+          input: '%checkitem_mat:STONE,data:1%'
+          output: 'yes'
+      deny_commands:
+      - '[message] &4商店 &8> &f你没有 &c1 x 花岗岩 &f来出售.'
+    left_click_commands:
+    - '[console] te remove %player_name% 100'
+    - '[console] give %player_name% stone:1 1'
+    - '[message] &2Shop &8> &f你购买了 &a1 x 花岗岩 &f花费 &a100 代币&f.'
+    right_click_commands:
+    - '[console] te add %player_name% 25'
+    - '[console] clear %player_name% stone:1 1'
+    - '[message] &2Shop &8> &f你出售了 &a1 x 花岗岩 &f获得 &a25 代币&f.'
+### 代币商店结束
+
+##########################################################################
+# + ------------------------------------------------------------------ + #
+# |                       PLAYER POINTS 经济系统                       | #
+# + ------------------------------------------------------------------ + #
+##########################################################################
+  'points':
+    material: stone
+    data: 1
+    slot: 2
+    display_name: '&f花岗岩'
+    lore:
+    - '&8* &7Buy for: &f100 &c点券'
+    - '&8* &7Sell for: &f25 &a点券'
+    left_click_requirement:
+      requirements:
+        anything_here:
+          type: '>='
+          input: '%playerpoints_points%'
+          output: '100'
+      deny_commands:
+      - '[message] &4商店 &8> &f你需要 &c100 点券 &f来购买 &c1 x 花岗岩&f.'
+    right_click_requirement:
+      requirements:
+        anything_here:
+          type: string equals
+          input: '%checkitem_mat:STONE,data:1%'
+          output: 'yes'
+      deny_commands:
+      - '[message] &4商店 &8> &f你没有 &c1 x 花岗岩 &f来出售.'
+    left_click_commands:
+    - '[console] points take %player_name% 100'
+    - '[console] give %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你购买了 &a1 x 花岗岩 &f花费 &a100 点券&f.'
+    right_click_commands:
+    - '[console] points give %player_name% 25'
+    - '[console] clear %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你出售了 &a1 x 花岗岩 &f获得 &a25 点券&f.'
+### 点券商店结束
+
+##########################################################################
+# + ------------------------------------------------------------------ + #
+# |                         PLAYER XP 经济系统                         | #
+# + ------------------------------------------------------------------ + #
+##########################################################################
+# 此处使用PAPI变量 %player_level% 
+  'level':
+    material: stone
+    data: 1
+    slot: 3
+    display_name: '&f花岗岩'
+    lore:
+    - '&8* &7购买: &f2 等级'
+    - '&8* &7出售: &f1 等级'
+    left_click_requirement:
+      requirements:
+        anything_here:
+          type: '>='
+          input: '%player_total_exp%'
+          output: '34' # 查看 http://www.pernsteiner.org/minecraft/levelcalc.html 获得等级计算机制详情
+      deny_commands:
+      - '[message] &4商店 &8> &f你需要 &c2等级 (34 XP) &f来购买 &c1 x 花岗岩&f.'
+    right_click_requirement:
+      requirements:
+        anything_here:
+          type: string equals
+          input: '%checkitem_mat:STONE,data:1%'
+          output: 'yes'
+      deny_commands:
+      - '[message] &4商店 &8> &f你需要 &c1 x 花岗岩 &f来出售.'
+    left_click_commands:
+    - '[console] xp give %player_name% -2L' # We need to "give" a negative amount, to remove XP :-/
+    - '[console] give %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你购买了 &a1 x 花岗岩 &f花费 &a2 等级&f.'
+    right_click_commands:
+    - '[console] xp give %player_name% 1L' # L means Level. You could also just type 17 for 17 XP.
+    - '[console] clear %player_name% stone:1 1'
+    - '[message] &2商店 &8> &f你出售了 &a1 x 花岗岩 &f获得 &a1 等级&f.'
+### 经验商店结束
