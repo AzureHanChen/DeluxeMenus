@@ -156,7 +156,7 @@ items:
     - '&f点击前往'
     - '&fC矿场'
     - ''
-    - '&e&l已结束'
+    - '&e&l已解锁'
     left_click_commands:
     - '[close]'
     - '[player] warp C'
