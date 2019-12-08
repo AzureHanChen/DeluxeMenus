@@ -1,7 +1,7 @@
 # DeluxeMenus 1.12.0 main configuration file
 # 由MCBBS@AzureHanChen 汉化&由PCD小组协助部分汉化
 # 此汉化按照 CC-BY-NC-SA 4.0 开放转载,汉化著作权归AzureHanChen所有
-# 如果您想进一步深入了解此插件,欢迎去MCBBS站内Wiki查询
+# 如果您想深入了解此插件,欢迎去MCBBS站内Wiki查询
 # 
 # check_updates: <true/false>
 #   Should DeluxeMenus check if there are any updates available on Spigot and inform ops there is an update available.
