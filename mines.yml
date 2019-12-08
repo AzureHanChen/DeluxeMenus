@@ -4,7 +4,7 @@
 #                                                                        #
 # 注意: 此菜单是单独文件格式存在的,请勿直接复制进config.yml                  #
 #       把以下代码复制进入gui_menus的kits.yml(如果没有就新建一个)           #
-#       并在config.yml注册,注册的代码紧跟在下面                             #
+#       并在config.yml注册,注册的代码紧跟在下面                            #
 #       然后重置插件(/dm reload)                                          #
 #                                                                        #
 # gui_menus:                                                             #
